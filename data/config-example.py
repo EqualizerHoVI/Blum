@@ -1,5 +1,5 @@
 # api id, hash
-API_ID = 
+API_ID = 123
 API_HASH = ''
 
 # задержка между подключениями к аккаунтам
@@ -25,6 +25,9 @@ SLEEP_GAME_TIME = [100,200] #[min,max]
 
 # мини задержки
 MINI_SLEEP = [3,7] #[min,max]
+
+# доп задержка после 8часов 
+SLEEP_8HOURS = [60*60,120*60] #[min,max] seconds
 
 hello ='''
 

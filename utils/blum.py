@@ -158,6 +158,7 @@ class Blum:
         resp_json = await resp.json()
         try:
             for task in resp_json:
+<<<<<<< HEAD
                 if "subTasks" in task:
                     for subtask in task['subTasks']:
                         if subtask['status'] == "NOT_STARTED":
@@ -178,6 +179,16 @@ class Blum:
                         answer = await answer.json()
                         logger.success(f"tasks | Thread {self.thread} | {self.name} | Claimed TASK reward! Claimed: {answer['reward']}")
                         await asyncio.sleep(random.randint(*config.MINI_SLEEP))
+=======
+                if task['status'] == "NOT_STARTED":
+                    await self.session.post(f"https://game-domain.blum.codes/api/v1/tasks/{task['id']}/start",proxy=self.proxy)
+                    await asyncio.sleep(random.randint(*config.MINI_SLEEP))
+                elif task['status'] == "DONE":
+                    answer = await self.session.post(f"https://game-domain.blum.codes/api/v1/tasks/{task['id']}/claim",proxy=self.proxy)
+                    answer = await answer.json()
+                    logger.success(f"tasks | Thread {self.thread} | {self.name} | Claimed TASK reward! Claimed: {answer['reward']}")
+                    await asyncio.sleep(random.randint(*config.MINI_SLEEP))
+>>>>>>> 828915b3d2fbe6f592b6983e0707bb37324efa5f
         except Exception as err:
             logger.error(f"tasks | Thread {self.thread} | {self.name} | {err}")
     
